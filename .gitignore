@@ -1,0 +1,106 @@
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+Thumbs.db
+
+# composer vendor dir
+/vendor
+
+# composer itself is not needed
+composer.phar
+
+# Mac DS_Store Files
+.DS_Store
+
+# phpunit itself is not needed
+phpunit.phar
+# local phpunit config
+/phpunit.xml
+
+tests/_output/*
+tests/_support/_generated
+
+#vagrant folder
+/.vagrant
+
+# Composer
+/vendor/
+
+# Yii runtime and cache
+/runtime/
+/web/assets/
+
+# Yii console logs (optional)
+/console/runtime/
+
+# Environment and config files
+/.env
+/.env.local
+/config/db.php
+/config/params-local.php
+/config/web-local.php
+/config/console-local.php
+
+# IDE and system files
+/.idea/
+/.vscode/
+*.swp
+*.swo
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Tests output
+/tests/_output/
+/tests/_support/_generated/
+
+# Coverage reports
+/coverage/
+
+# PHPStorm specific
+.idea/
+
+# Vagrant
+.vagrant/
+
+# Docker
+/docker-compose.override.yml
+
+# Node & Bower
+/node_modules/
+/bower_components/
+/npm-debug.log
+/yarn-error.log
+
+# Backup files
+*.sql
+*.sql.gz
+*.tar
+*.tar.gz
+*.zip
+*.7z
+
+# Windows-specific
+desktop.ini
+
+# Unix-specific
+*~
+
+# Optional: ignore uploads if applicable
+/web/uploads/
+
+# Optional: ignore mail output
+/mail/
