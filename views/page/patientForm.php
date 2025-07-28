@@ -1,14 +1,14 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+$path = 'page/' . $action;
 $this->title = 'Редактировать данные о пациенте';
 ?>
 
 <h1><?= Html::encode($this->title) ?></h1>
 
 <?php $form = ActiveForm::begin([
-    'action' => ['page/update', 'type' => 'patient', 'id' => $model->id]
+    'action' => [$path, 'type' => 'patient', 'id' => $model->id]
 ]); ?>
 
 <?= $form->field($model, 'fio') ?>

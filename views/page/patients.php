@@ -1,5 +1,6 @@
 <?php
 use yii\grid\GridView;
+use yii\helpers\Html;
 /** @var yii\data\ActiveDataProvider $dataProvider */
 /** @var app\models\ServiceSearch $searchModel */
 ?>
@@ -29,3 +30,6 @@ use yii\grid\GridView;
     ],
     ],
 ]) ?>
+<?= Html::a('Добавить пациента', ['page/create', 'type' => 'patient'], [
+    'class' => 'btn btn-success'
+]);?>

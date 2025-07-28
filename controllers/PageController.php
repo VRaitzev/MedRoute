@@ -11,9 +11,11 @@ use yii\data\ActiveDataProvider;
 use app\models\ServiceSearch;
 use app\models\PatientSearch;
 use app\models\DoctorSearch;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class PageController extends Controller
 {
+    
     public function actionServices()
     {
     $searchModel = new ServiceSearch();
@@ -102,6 +104,38 @@ class PageController extends Controller
             return $this->redirect(["page/" . $redirect_end]); 
         }
 
-        return $this->render($redirect, ['model' => $model]);
+        return $this->render($redirect, ['model' => $model, 'action' => 'update']);
     }    
+
+    public function actionCreate($type)
+    {
+        switch ($type) {
+        case 'service':
+            $model = new Service();
+            $redirect = 'serviceForm';
+            $redirect_end = 'services';
+            break;
+        case 'patient':
+            $model = new Patient();
+            $redirect = 'patientForm';
+            $redirect_end = 'patients';
+            break;
+        case 'doctor':
+            $model = new Doctor();
+            $redirect = 'doctorForm';
+            $redirect_end = 'doctors';
+            break;
+        default:
+            throw new \yii\web\NotFoundHttpException('Неверный тип');
+    }
+        if (!$model) {
+            throw new \yii\web\NotFoundHttpException('Сущность отсутствует!');
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(["page/" . $redirect_end]); 
+        }
+
+        return $this->render($redirect, ['model' => $model, 'action' => 'create']);
+    }   
 }
