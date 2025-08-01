@@ -15,6 +15,9 @@ echo Nav::widget(
         ['label' => 'Врачи', 'url' => ['/page/doctors']],
         ['label' => 'Пациенты', 'url' => ['/page/patients']],
         ['label' => 'Направления', 'url' => ['/page/directions']],
+        ['label' => 'Вход', 'url' => ['/page/login']],
+        ['label' => 'Регистрация', 'url' => ['/page/sign-up']],
+
     ]]
     );
     NavBar::end();

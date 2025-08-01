@@ -13,9 +13,9 @@ class Doctor extends ActiveRecord
      public function rules()
     {
         return [
-            [['username', 'email'], 'required'], // обязательно
-            ['email', 'email'],                  // проверка email
-            [['username', 'email'], 'string', 'max' => 255], // строки
+            [['username', 'email'], 'required'], 
+            ['email', 'email'],                  
+            [['username', 'email'], 'string', 'max' => 255], 
         ];
     }
 }

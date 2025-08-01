@@ -18,6 +18,7 @@ class Patient extends ActiveRecord
             ['email', 'email'],
             ['gender', 'in', 'range' => ['мужской', 'женский']], 
             [['fio', 'address', 'email', 'phone_number'], 'string', 'max' => 255],
+            ['date_of_birth', 'date', 'format' => 'php:Y-m-d'],
         ];
     }
 }

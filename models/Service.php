@@ -13,9 +13,9 @@ class Service extends ActiveRecord
      public function rules()
     {
         return [
-            [['name', 'cost'], 'required'],                 // проверка email
+            [['name', 'cost'], 'required'],                 
             ['name', 'string', 'max' => 255],
-            ['cost', 'number'] // строки
+            ['cost', 'number'] 
         ];
     }
 }
