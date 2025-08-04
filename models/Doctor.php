@@ -17,4 +17,9 @@ class Doctor extends ActiveRecord
             [['fio', 'position'], 'string', 'max' => 255], 
         ];
     }
+
+    public static function find()
+{
+    return parent::find()->alias('doc')->andWhere(['doc.delete_status' => false]);
+}
 }

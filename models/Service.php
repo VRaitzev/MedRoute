@@ -18,4 +18,9 @@ class Service extends ActiveRecord
             ['cost', 'number'] 
         ];
     }
+
+    public static function find()
+{
+    return parent::find()->alias('s')->andWhere(['s.delete_status' => false]);
+}
 }

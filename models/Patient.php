@@ -21,4 +21,9 @@ class Patient extends ActiveRecord
             ['date_of_birth', 'date', 'format' => 'php:Y-m-d'],
         ];
     }
+
+    public static function find()
+{
+    return parent::find()->alias('p')->andWhere(['p.delete_status' => false]);
+}
 }

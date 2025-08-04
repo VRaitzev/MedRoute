@@ -25,7 +25,6 @@ $doctors = ArrayHelper::map(Doctor::find()->all(), 'id', 'fio');
 <?= $form->field($model, 'service_ids')->dropDownList(
     $services,
     [
-        'prompt' => 'Выберите услугу',
         'multiple' => true,
         'size' => 5, 
     ]

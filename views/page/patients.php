@@ -11,12 +11,12 @@ use yii\helpers\Html;
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
     'columns' => [
-        'fio',
-        'gender',
-        'date_of_birth',
-        'address',
-        'phone_number',
-        'email',
+        ['attribute' => 'fio', 'label' => 'ФИО'],
+        ['attribute' => 'gender', 'label' => 'Пол'],
+        ['attribute' => 'date_of_birth', 'label' => 'Дата рождения'],
+        ['attribute' => 'address', 'label' => 'Адрес'],
+        ['attribute' => 'phone_number', 'label' => 'Номер телефона'],
+        ['attribute' => 'email', 'label' => 'Электронная почта'],
         [
     'class' => 'yii\grid\ActionColumn',
     'template' => '{update} {delete}',

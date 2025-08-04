@@ -12,8 +12,8 @@ $path = 'page/' . $action;
 
 <?php $form = ActiveForm::begin(['action' => [$path, 'type' => 'doctor', 'id' => $model->id]]); ?>
 
-<?= $form->field($model, 'fio') ?>
-<?= $form->field($model, 'position') ?>
+<?= $form->field($model, 'fio')->label('ФИО') ?>
+<?= $form->field($model, 'position')->label('Должность') ?>
 
 <div>
     <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

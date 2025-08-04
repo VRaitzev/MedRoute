@@ -11,8 +11,12 @@ use yii\helpers\Html;
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
     'columns' => [
-        'name',
-        'cost',
+        [
+        'attribute' => 'name',
+        'label'=> 'Название'],
+        ['attribute' => 'cost',
+        'label'=> 'Цена'
+    ],
     [
     'class' => 'yii\grid\ActionColumn',
     'template' => '{update} {delete}',

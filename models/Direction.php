@@ -62,4 +62,9 @@ class Direction extends ActiveRecord
             }
         }
     }
+
+    public static function find()
+{
+    return parent::find()->alias('d')->andWhere(['d.delete_status' => false]);
+}
 }

@@ -17,6 +17,7 @@ echo Nav::widget(
         ['label' => 'Направления', 'url' => ['/page/directions']],
         ['label' => 'Вход', 'url' => ['/page/login']],
         ['label' => 'Регистрация', 'url' => ['/page/sign-up']],
+        ['label' => 'Выход', 'url' => ['/page/logout']],
 
     ]]
     );

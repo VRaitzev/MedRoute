@@ -11,12 +11,13 @@ $this->title = 'Редактировать данные о пациенте';
     'action' => [$path, 'type' => 'patient', 'id' => $model->id]
 ]); ?>
 
-<?= $form->field($model, 'fio') ?>
-<?= $form->field($model, 'gender') ?>
-<?= $form->field($model, 'date_of_birth') ?>
-<?= $form->field($model, 'address') ?>
-<?= $form->field($model, 'phone_number') ?>
-<?= $form->field($model, 'email') ?>
+<?= $form->field($model, 'fio')->label('ФИО') ?>
+<?= $form->field($model, 'gender')->dropDownList(['мужской' => 'Мужской', 'женский' => 'Женский'],
+    ['prompt' => 'Выберите пол'])->label('Пол') ?>
+<?= $form->field($model, 'date_of_birth')->input('date')->label('Дата рождения') ?>
+<?= $form->field($model, 'address')->label('Адрес') ?>
+<?= $form->field($model, 'phone_number')->label('Номер телефона') ?>
+<?= $form->field($model, 'email')->label('Электронная почта') ?>
 
 <div>
     <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

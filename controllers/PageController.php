@@ -85,9 +85,8 @@ class PageController extends Controller
             throw new \yii\web\NotFoundHttpException('Неверный тип');
     }
 
-    if ($model) {
-        $model->delete();
-    }
+    $model->delete_status = true;
+    $model->save(false, ['delete_status']);
     return $this->redirect([$redirect]);
 }
     public function actionUpdate($type, $id)

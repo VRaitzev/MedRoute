@@ -11,8 +11,8 @@ $this->title = 'Редактировать услугу';
     'action' => [$path, 'type' => 'service', 'id' => $model->id]
 ]); ?>
 
-<?= $form->field($model, 'name') ?>
-<?= $form->field($model, 'cost') ?>
+<?= $form->field($model, 'name')->label('Название') ?>
+<?= $form->field($model, 'cost')->label('Цена') ?>
 
 <div>
     <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
