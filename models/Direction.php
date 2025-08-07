@@ -63,6 +63,14 @@ class Direction extends ActiveRecord
         }
     }
 
+    public function getTotalCost()
+{
+    if (empty($this->services)) {
+        return 0;
+    }
+    return array_sum(array_map(fn($s) => $s->cost, $this->services));
+}
+
     public static function find()
 {
     return parent::find()->alias('d')->andWhere(['d.delete_status' => false]);

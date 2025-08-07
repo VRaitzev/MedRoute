@@ -10,6 +10,8 @@ use yii\helpers\Html;
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
+    'layout' => "{summary}\n{items}\n{pager}",
+    'summary' => 'Показано {begin}–{end} из {totalCount}',
     'columns' => [
         ['attribute' => 'fio', 'label' => 'ФИО'],
         ['attribute' => 'gender', 'label' => 'Пол'],

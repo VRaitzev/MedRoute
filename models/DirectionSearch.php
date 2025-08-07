@@ -10,11 +10,12 @@ class DirectionSearch extends Direction
     public $patientFio;
     public $doctorFio;
     public $serviceName;
+    public $totalCost;
 
     public function rules()
     {
         return [
-            [['patientFio', 'doctorFio', 'serviceName'], 'safe'],
+            [['patientFio', 'doctorFio', 'serviceName', 'totalCost'], 'safe'],
             [['patient_id', 'doctor_id'], 'integer'], 
             ['date', 'date', 'format' => 'php:Y-m-d'],
         ];
@@ -24,9 +25,13 @@ class DirectionSearch extends Direction
     {
         $query = Direction::find()->alias('d');
 
-        $query->joinWith(['patient p', 'doctor doc', 'services s']);
-
-        $query->groupBy('d.id');
+        $query = Direction::find()->alias('d')
+            ->joinWith(['patient p', 'doctor doc', 'services s'])
+            ->select([
+                'd.*',
+                new Expression('SUM(s.cost) AS totalCost')
+            ])
+            ->groupBy('d.id');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -48,6 +53,10 @@ class DirectionSearch extends Direction
             'asc' => ['d.date' => SORT_ASC],
             'desc' => ['d.date' => SORT_DESC],
         ];
+        $dataProvider->sort->attributes['totalCost'] = [
+            'asc' => ['totalCost' => SORT_ASC],
+            'desc' => ['totalCost' => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -66,6 +75,9 @@ class DirectionSearch extends Direction
             $query->andFilterWhere(['d.date' => $this->date]);
         }
 
+        if ($this->totalCost !== null && $this->totalCost !== '') {
+            $query->having(['SUM(s.cost)' => $this->totalCost]);
+        }
         return $dataProvider;
     }
 }

@@ -11,6 +11,8 @@ use yii\data\ActiveDataProvider;
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
+    'layout' => "{summary}\n{items}\n{pager}",
+    'summary' => 'Показано {begin}–{end} из {totalCount}',
     'columns' => [
         [
             'attribute' => 'patientFio',
@@ -43,18 +45,12 @@ use yii\data\ActiveDataProvider;
             'label' => 'Дата',
             'format' => ['date', 'php:d.m.Y'],
         ],
-                [
+        [
             'attribute' => 'totalCost',
             'label' => 'Общая цена',
             'value' => function ($model) {
-                $services = $model->services;
-                if (empty($services)) {
-                    return '0';
-                }
-                $costs = array_map(fn($service) => $service->cost, $services);
-                $totalCost = array_sum($costs);
-                return $totalCost;
-},
+                return number_format((int) $model->totalCost, 0, ',', ' ') . ' руб';
+            },
         ],
         [
             'class' => 'yii\grid\ActionColumn',
