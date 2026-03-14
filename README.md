@@ -1,152 +1,112 @@
-# Медицинская информационная система
+# Medical Information System (MIS)
 
-[![PHP](https://img.shields.io/badge/PHP-7.4+-blue.svg)](https://php.net)
-[![Yii2](https://img.shields.io/badge/Yii2-2.0+-green.svg)](https://www.yiiframework.com/)
-[![MySQL](https://img.shields.io/badge/MySQL-8.0+-orange.svg)](https://mysql.com)
+[![PHP](https://img.shields.io/badge/PHP-7.4+-blue.svg?logo=php&logoColor=white)](https://php.net)
+[![Yii2](https://img.shields.io/badge/Yii2-2.0+-green.svg?logo=yiiframework&logoColor=white)](https://www.yiiframework.com/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0+-orange.svg?logo=mysql&logoColor=white)](https://mysql.com)
 
-**Веб-приложение для автоматизации процессов медицинского учреждения** — управление пациентами, врачами, услугами и направлениями.
-
----
-
-## Возможности системы
-
-### Управление данными
-- **Пациенты** — ведение базы пациентов с полной демографической информацией
-- **Врачи** — учет медицинского персонала и их должностей
-- **Услуги** — каталог медицинских услуг с ценами
-- **Направления** — формирование направлений на медицинские услуги
-
-### Безопасность
-- **Авторизация** — система регистрации и аутентификации
-- **Ролевая модель** — разграничение прав доступа
-- **Soft Delete** — мягкое удаление записей без потери данных
-
-### Интерфейс
-- **CRUD операции** — создание, чтение, обновление, удаление
-- **Поиск и фильтрация** — быстрый поиск по всем сущностям
-- **Пагинация** — удобная навигация по большим объёмам данных
+**Medical Information System** is a full-stack web application designed to automate healthcare facility workflows, including patient management, physician scheduling, and medical service orchestration.
 
 ---
 
-## Архитектура
+## 🚀 Key Features
 
-MVC Pattern (Yii2 Framework)
+### **Healthcare Management**
+- **Patient Records:** Comprehensive database for managing demographic information and medical history.
+- **Physician Directory:** Tracking medical staff, specialties, and professional roles.
+- **Service Catalog:** Dynamic management of medical procedures and pricing.
+- **Referral System:** Automated generation and tracking of medical referrals.
 
-├── Models (Сущности и бизнес-логика)  
-├── Views (Представления — Twig шаблоны)  
-├── Controllers (Обработка запросов)  
-└── Database (Миграции и связи)
+### **Enterprise Security**
+- **RBAC (Role-Based Access Control):** Granular permission management for different user tiers.
+- **Authentication:** Secure registration and multi-factor login protocols.
+- **Soft Delete:** Logical data deletion ensures audit trails and prevents accidental data loss.
 
----
-
-## Технологический стек
-
-- **Backend:** PHP 7.4+, Yii2 Framework  
-- **Database:** MySQL 8.0+  
-- **Templates:** Twig  
-- **Auth:** Yii2 RBAC  
-- **Migrations:** Yii2 Migration System
-
----
-
-## Установка и запуск
-
-### Предварительные требования
-
-    PHP 7.4+
-    Composer
-    MySQL 8.0+
-
-### Установка зависимостей
-
-    composer install
-
-### Настройка базы данных
-
-1. Создайте базу данных MySQL.  
-2. Настройте подключение в `config/db.php`.  
-3. Примените миграции:
-
-    php yii migrate
-
-### Запуск приложения
-
-    php yii serve
-
-Приложение будет доступно по адресу: http://localhost:8080
+### **UX & Reliability**
+- **Full CRUD Support:** Standardized operations for all clinical entities.
+- **Advanced Filtering:** High-speed search and multi-parameter filtering for large datasets.
+- **Pagination & Optimization:** Smooth navigation through extensive medical records.
 
 ---
 
-## Структура базы данных
+## 🏗️ Architecture
 
-**Основные таблицы:**
-- `patients` — пациенты (ФИО, пол, дата рождения, контакты)
-- `doctors` — врачи (ФИО, должность)
-- `services` — медицинские услуги (название, стоимость)
-- `direction_list` — направления (пациент, врач, дата)
-- `direction_list_services` — связь направлений и услуг
-- `admins` — администраторы системы
+The system is built on the **MVC (Model-View-Controller)** pattern using the **Yii2 Framework**, ensuring a strict separation of concerns:
 
-**Ключевые связи:**
-- Направление → Пациент (Many-to-One)
-- Направление → Врач (Many-to-One)
-- Направление → Услуги (Many-to-Many)
+```text
+MIS-Structure/
+├── Models/        # Domain entities, validation rules, and business logic
+├── Views/         # UI templates (rendered via Twig for enhanced security)
+├── Controllers/   # Request orchestration and data flow handling
+└── Database/      # Migrations, seeding scripts, and relational mapping
+```
 
 ---
 
-## Основные endpoints
+## 🛠️ Technology Stack
 
-| Метод | URL | Описание |
-|-------|-----|----------|
-| GET   | /page/services | Список услуг |
-| GET   | /page/patients | Список пациентов |
-| GET   | /page/doctors  | Список врачей |
-| GET   | /page/directions | Список направлений |
-| POST  | /page/create/{type} | Создание сущности |
-| POST  | /page/update/{type}/{id} | Обновление сущности |
-| POST  | /page/delete/{type}/{id} | Удаление сущности |
+- **Backend:** PHP 7.4+ with **Yii2 Professional Framework**
+- **Database:** **MySQL 8.0** with relational integrity constraints
+- **Templating:** **Twig** (Template engine for PHP)
+- **Security:** Yii2 built-in RBAC and CSRF protection
+- **Deployment:** Composer-based dependency management
 
 ---
 
-## Безопасность
+## 🧬 Database Schema & Relations
 
-- **Валидация данных** — на уровне моделей Yii2  
-- **SQL-инъекции** — защита через ActiveRecord  
-- **XSS** — экранирование в шаблонах  
-- **CSRF** — встроенная защита Yii2
+The relational model is optimized for high data integrity:
 
----
+- **Patients & Doctors:** Core demographic entities.
+- **Direction List:** Acts as a junction entity linking patients to specific clinical events.
+- **Direction-Services (Many-to-Many):** Handles complex scenarios where one referral includes multiple medical services.
 
-## Миграции
-
-Система использует миграции Yii2 для управления структурой БД:
-
-    # Создание новой миграции
-    php yii migrate/create create_new_table
-
-    # Применение миграций
-    php yii migrate
-
-    # Откат миграций
-    php yii migrate/down
+**Key Associations:**
+- `Referral` → `Patient` (**Many-to-One**)
+- `Referral` → `Doctor` (**Many-to-One**)
+- `Referral` ↔ `Services` (**Many-to-Many** via junction table)
 
 ---
 
-## Разработка
+## 🛡️ Security Implementation
 
-**Структура проекта:**
-
-controllers/     - Контроллеры  
-models/          - Модели и формы  
-views/           - Представления  
-migrations/      - Миграции БД  
-config/          - Конфигурации
-
-**Code Style:**
-- PSR-12 стандарт кодирования  
-- Yii2 code style guidelines  
-- Документирование с использованием PHPDoc
+- **Data Validation:** Strict type-checking and validation at the Model layer.
+- **SQLi Protection:** Full implementation of **ActiveRecord** to prevent SQL injection.
+- **XSS Prevention:** Automatic output escaping integrated into Twig templates.
+- **CSRF Defense:** Mandatory token validation for all state-changing requests.
 
 ---
 
-**Разработано в рамках учебной стажировки** — демонстрирует навыки full-stack разработки на PHP/Yii2.
+## ⚙️ Installation & Deployment
+
+### Prerequisites
+- PHP 7.4 or higher
+- Composer
+- MySQL 8.0+
+
+### Setup
+1. **Clone and Install:**
+   ```bash
+   composer install
+   ```
+2. **Database Configuration:**
+   Configure your MySQL credentials in `config/db.php`.
+3. **Run Migrations:**
+   ```bash
+   php yii migrate
+   ```
+4. **Launch Server:**
+   ```bash
+   php yii serve
+   ```
+*System will be available at `http://localhost:8080`.*
+
+---
+
+## 📈 Development Standards
+
+- **Coding Standard:** Adherence to **PSR-12** for consistent code style.
+- **Documentation:** Extensively documented using **PHPDoc** for automated API generation.
+- **Version Control:** Structured database evolution using Yii2 Migration System.
+
+---
+*Developed as part of a technical internship to demonstrate full-stack engineering proficiency in PHP/Yii2 environments.*
